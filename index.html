@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>a little something for ara</title>
+<meta name="description" content="A birthday surprise for Ara.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ambient starfield, present behind every screen -->
+  <canvas id="sky-canvas" aria-hidden="true"></canvas>
+
+  <!-- fireworks layer, only active on the birthday screen -->
+  <canvas id="fireworks-canvas" aria-hidden="true"></canvas>
+
+  <!-- explosion particle layer, only active during the cake explosion -->
+  <canvas id="explosion-canvas" aria-hidden="true"></canvas>
+
+  <main id="app">
+
+    <!-- ================= COUNTDOWN SCREEN ================= -->
+    <section id="countdown-screen" class="screen">
+      <p class="eyebrow">time until</p>
+      <h1 class="headline">ara turns 14</h1>
+
+      <div class="countdown" role="timer" aria-live="off">
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-days">00</span>
+          <span class="countdown-label">days</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-hours">00</span>
+          <span class="countdown-label">hours</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-minutes">00</span>
+          <span class="countdown-label">minutes</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-seconds">00</span>
+          <span class="countdown-label">seconds</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CAKE SCREEN ================= -->
+    <section id="cake-screen" class="screen hidden">
+      <p class="cake-hint" id="cake-hint">make a wish</p>
+      <div id="cake-stage">
+        <img id="cake-image" src="assets/cake.png" alt="A pixel-art birthday cake with one candle" draggable="false">
+        <div id="flame" role="button" tabindex="0" aria-label="Blow out the candle"></div>
+      </div>
+    </section>
+
+    <!-- ================= BIRTHDAY SCREEN ================= -->
+    <section id="birthday-screen" class="screen hidden">
+      <h1 class="birthday-title">
+        <span class="line">HAPPY BIRTHDAY</span>
+        <span class="line line-name">ARA!</span>
+      </h1>
+      <p id="typewriter" class="typewriter" aria-live="polite"></p>
+      <button id="gift-button" class="gift-button hidden" type="button">open your gift</button>
+    </section>
+
+  </main>
+
+  <!-- ================= ENVELOPE / LETTER OVERLAY ================= -->
+  <div id="letter-overlay" class="hidden">
+    <div id="envelope-wrap">
+      <div id="envelope">
+        <div class="envelope-back"></div>
+        <div class="envelope-flap"></div>
+        <div id="letter">
+          <p class="letter-heading">Happy Birthday Ara!</p>
+          <p>I don't really know how to start this, so I'll just say thank you.</p>
+          <p>Thank you for all the laughs, the conversations, and all the little moments over the past year. Whether we were talking about random things or just existing in the same conversation, you've made a lot of days brighter than you probably realize.</p>
+          <p>I wanted to make you something instead of just sending a message because you deserve something a little more personal.</p>
+          <p>I hope fourteen brings you lots of happiness, new memories, success, and countless reasons to smile.</p>
+          <p>No matter where life takes us, I hope today reminds you that there are people who genuinely care about you.</p>
+          <p>Happy Birthday.</p>
+          <p class="letter-signature">&mdash; Atharv</p>
+          <button id="close-letter" class="close-letter" type="button">close letter</button>
+        </div>
+        <div class="envelope-front"></div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="bg-music" src="assets/love-for-you.mp3" preload="auto"></audio>
+
+  <script src="js/stars.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/cake.js"></script>
+  <script src="js/birthday.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
